@@ -3,7 +3,7 @@ import os
 import requests
 from pathlib import Path
 
-OPENAI_API_KEY="sk-iovSklr9Q3aW95E3gwtCoMMxLDCE61gNhWq71JwFSJKyaJ9b"
+OPENAI_API_KEY="closeai 密钥"
 OPENAI_API_MAX_TOKENS=4000
 OPENAI_API_TEMPERATURE=0.7
 
