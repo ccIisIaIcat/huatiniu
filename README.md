@@ -1,4 +1,4 @@
-# 话题牛 (HuaTiNiu)
+# 今日话题牛 (HuaTiNiu)
 
 一个自动化内容生产和发布的工具集，用于高效地生成、处理和发布多平台内容。
 
@@ -6,11 +6,11 @@
 
 ### 必需的外部服务
 1. **Fish Speech**
-   - 需要在本地部署 Fish Speech 服务
+   - 需要在本地部署 Fish Speech 服务 最好在8089端口，不然需要在代码里修改
    - 确保服务正常运行并可访问
 
 2. **OpenAI API**
-   - 需要有效的 OpenAI API Key
+   - 需要有效的closeAI api key（closeAI是一个LLM国内镜像源）
    - 用于内容生成和处理
 
 ## 项目结构
@@ -50,8 +50,7 @@
 
 1. **API密钥配置**
    ```
-   # 在项目根目录创建 .env 文件
-   OPENAI_API_KEY=your_api_key_here
+   我硬编码写在代码里了
    ```
 
 2. **Fish Speech 配置**
@@ -60,26 +59,7 @@
 
 ## 使用流程
 
-1. 配置环境
-   ```bash
-   # 安装依赖
-   pip install -r requirements.txt
-   
-   # 配置API密钥
-   # 启动Fish Speech服务
-   ```
-
-2. 运行内容生成
-   ```bash
-   python tts/master.py  # 运行TTS处理
-   python cutmovie/master.py  # 运行视频处理
-   ```
-
-3. 发布内容
-   ```bash
-   python bilibili/master.py  # B站发布
-   python zhihu/master.py  # 知乎发布
-   ```
+写在sop文件里了
 
 ## 注意事项
 
@@ -88,13 +68,3 @@
 - 视频处理可能需要较大的系统资源，请确保系统配置满足要求
 - 建议定期备份生成的内容和配置文件
 
-## 贡献指南
-
-欢迎提交Issue和Pull Request来帮助改进项目。在提交代码前，请确保：
-1. 代码符合项目的编码规范
-2. 添加了必要的注释和文档
-3. 所有测试用例通过
-
-## 许可证
-
-本项目采用 MIT 许可证
