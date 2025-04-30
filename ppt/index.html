@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今日话题牛，你的最佳AI视频牛马</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            scroll-behavior: smooth;
+        }
+        .section {
+            padding: 80px 0;
+            width: 100%;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: linear-gradient(135deg, #00a1d6, #0077cc);
+            padding: 100px 0 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .process-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 40px 0;
+        }
+        .process-card {
+            background: linear-gradient(145deg, #2a2a2a, #333);
+            border-radius: 15px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: white;
+        }
+        .process-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,161,214,0.2);
+        }
+        .process-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #00a1d6;
+            transition: width 0.3s ease;
+        }
+        .process-card:hover::before {
+            width: 100%;
+            opacity: 0.1;
+        }
+        .card-number {
+            background: #00a1d6;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        .card-title {
+            color: #00a1d6;
+            font-size: 1.5em;
+            margin: 0 0 15px 0;
+        }
+        .card-content {
+            font-size: 1em;
+            opacity: 0.9;
+            flex-grow: 1;
+        }
+        .detail-section {
+            padding: 100px 0;
+            background: #1a1a1a;
+        }
+        .detail-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .detail-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .detail-title {
+            font-size: 2.5em;
+            color: #00a1d6;
+            margin-bottom: 20px;
+        }
+        .detail-subtitle {
+            font-size: 1.2em;
+            color: #ffffff;
+            opacity: 0.8;
+        }
+        .detail-content {
+            background: linear-gradient(145deg, #2a2a2a, #333);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .detail-image {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .detail-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .detail-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        .detail-text p {
+            margin-bottom: 20px;
+        }
+        .detail-text h3 {
+            color: #00a1d6;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        .detail-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .detail-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+        .detail-list li::before {
+            content: '•';
+            color: #00a1d6;
+            position: absolute;
+            left: 0;
+            font-size: 1.5em;
+            line-height: 1;
+        }
+        .detail-section-title {
+            color: #00a1d6;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #00a1d6;
+            padding-bottom: 15px;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #00a1d6;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+        .back-to-top:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+        }
+        @media (max-width: 768px) {
+            .process-cards {
+                grid-template-columns: 1fr;
+            }
+            .detail-content {
+                grid-template-columns: 1fr;
+            }
+            .detail-image {
+                order: -1;
+            }
+        }
+        .intro-image {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>今日话题牛，你的最佳AI视频牛马</h1>
+            <p class="subtitle">让AI为你7×24小时无偿打工</p>
+            <div class="intro-image">
+                <img src="images/workflow.jpg" alt="完整工作流程图">
+            </div>
+            <div class="process-cards">
+                <a href="#content-discovery" class="process-card">
+                    <div class="card-number">1</div>
+                    <h3 class="card-title">内容发现</h3>
+                    <p class="card-content">智能抓取知乎热榜话题，自动收集优质回答和相关图片资源。</p>
+                </a>
+                <a href="#content-filter" class="process-card">
+                    <div class="card-number">2</div>
+                    <h3 class="card-title">智能筛选</h3>
+                    <p class="card-content">AI分析内容质量和话题热度，筛选最适合制作视频的素材。</p>
+                </a>
+                <a href="#voice-conversion" class="process-card">
+                    <div class="card-number">3</div>
+                    <h3 class="card-title">语音转换</h3>
+                    <p class="card-content">将文字内容转换为自然流畅的语音，自动生成开场白和结束语。</p>
+                </a>
+                <a href="#video-synthesis" class="process-card">
+                    <div class="card-number">4</div>
+                    <h3 class="card-title">视频合成</h3>
+                    <p class="card-content">将语音与图片素材智能组合，生成完整视频内容。</p>
+                </a>
+                <a href="#music-addition" class="process-card">
+                    <div class="card-number">5</div>
+                    <h3 class="card-title">音乐配乐</h3>
+                    <p class="card-content">自动添加背景音乐，提升视频观感和艺术效果。</p>
+                </a>
+                <a href="#publish-distribute" class="process-card">
+                    <div class="card-number">6</div>
+                    <h3 class="card-title">发布分发</h3>
+                    <p class="card-content">自动将视频上传至B站，智能填写标题和简介。</p>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="content-discovery" class="detail-section">
+        <div class="detail-container">
+            <div class="detail-header">
+                <h2 class="detail-title">内容发现</h2>
+                <p class="detail-subtitle">爬取知乎热榜，让AI选择一个好的话题</p>
+            </div>
+            <div class="detail-content">
+                <div class="detail-text">
+                    <h3>生成视频稿</h3>
+                    <ul class="detail-list">
+                        <li>用机器人自动浏览知乎</li>
+                        <li>通过大语言模型选择合适话题</li>
+                        <li>再获取该话题下的一些回答，在合适的位置截图</li>
+                        <li>获取视频素材，建立资源索引</li>
+                    </ul>
+                </div>
+                <div class="detail-image">
+                    <img src="images/content-discovery.jpg" alt="内容发现流程图">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="content-filter" class="detail-section">
+        <div class="detail-container">
+            <div class="detail-header">
+                <h2 class="detail-title">智能筛选</h2>
+                <p class="detail-subtitle">免费的AI审稿员</p>
+            </div>
+            <div class="detail-content">
+                <div class="detail-text">
+                    <h3>AI内容评估</h3>
+                    <ul class="detail-list">
+                        <li>让AI阅读话题下选择的回答</li>
+                        <li>考虑回答是否通顺，是否包含了太多用语音念出来奇怪的内容（文献，英文等）</li>
+                        <li>给出审核意见，决定是否将对应回答作为部分视频素材</li>
+                    </ul>
+                </div>
+                <div class="detail-image">
+                    <img src="images/content-filter.jpg" alt="智能筛选系统展示">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="voice-conversion" class="detail-section">
+        <div class="detail-container">
+            <div class="detail-header">
+                <h2 class="detail-title">语音转换</h2>
+                <p class="detail-subtitle">将文字内容转换为自然流畅的语音，自动生成开场白和结束语</p>
+            </div>
+            <div class="detail-content">
+                <div class="detail-text">
+                    <h3>自动化的文字转语音</h3>
+                    <p>解锁新牛马：本地Fish Speech模型</p>
+                    <ul class="detail-list">
+                        <li>本地搭建Fish Speech模型（一个优秀的tts开源项目）</li>
+                        <li>调用本地tts服务（恭喜你节省了调用API的钱）</li>
+                        <li>自动生成开场白和结束语</li>
+                        <li>自动生成回答语音</li>
+                    </ul>
+                </div>
+                <div class="detail-image">
+                    <img src="images/voice-conversion.jpg" alt="语音转换流程">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="video-synthesis" class="detail-section">
+        <div class="detail-container">
+            <div class="detail-header">
+                <h2 class="detail-title">视频合成</h2>
+                <p class="detail-subtitle">给语音配上当时浏览知乎时的截图</p>
+            </div>
+            <div class="detail-content">
+                <div class="detail-text">
+                    <h3>配图并生成视频</h3>
+                    <p>确实这里可能太简单了，就是给音频配上对应的截图</p>
+                    <ul class="detail-list">
+                        <li>使用moviepy将对应的语音和截图结合生成视频</li>
+                        <li>将多段视频拼接</li>
+                    </ul>
+                </div>
+                <div class="detail-image">
+                    <img src="images/video-synthesis.jpg" alt="视频合成展示">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="music-addition" class="detail-section">
+        <div class="detail-container">
+            <div class="detail-header">
+                <h2 class="detail-title">音乐配乐</h2>
+                <p class="detail-subtitle">为了防止视频太呆加了背景音乐</p>
+            </div>
+            <div class="detail-content">
+                <div class="detail-text">
+                    <h3>配乐</h3>
+                    <p>用moviepy给生成的视频配乐</p>
+                </div>
+                <div class="detail-image">
+                    <img src="images/music-addition.jpg" alt="音乐配乐系统">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publish-distribute" class="detail-section">
+        <div class="detail-container">
+            <div class="detail-header">
+                <h2 class="detail-title">发布分发</h2>
+                <p class="detail-subtitle">你连发视频都不用管</p>
+            </div>
+            <div class="detail-content">
+                <div class="detail-text">
+                    <h3>自动发布系统</h3>
+                    <p>首次登录会记录cookies，之后会自动登录</p>
+                    <ul class="detail-list">
+                        <li>自动登录</li>
+                        <li>自动填入标题</li>
+                        <li>自动填入简介</li>
+                        <li>发布</li>
+                    </ul>
+                </div>
+                <div class="detail-image">
+                    <img src="images/publish-distribute.jpg" alt="发布系统界面">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="#" class="back-to-top">↑</a>
+</body>
+</html> 
